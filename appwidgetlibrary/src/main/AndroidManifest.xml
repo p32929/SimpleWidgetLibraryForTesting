@@ -3,7 +3,9 @@
     package="org.richit.appwidgetlibrary">
 
     <application>
-        <receiver android:name=".MyAppWidget1">
+        <activity android:name=".Activities.WebActivity"></activity>
+
+        <receiver android:name=".WidgetRelated.MyAppWidget1">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

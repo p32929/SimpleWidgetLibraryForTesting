@@ -1,9 +1,8 @@
-package org.richit.appwidgetlibrary;
+package org.richit.appwidgetlibrary.WidgetRelated;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
-import android.widget.RemoteViews;
 
 /**
  * Implementation of App Widget functionality.

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.WebActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF">
+
+        <ImageView
+            android:id="@+id/searchIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:padding="16dp"
+            android:src="@drawable/ic_magnify_grey600_36dp" />
+
+        <EditText
+            android:id="@+id/searchEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@+id/goIv"
+            android:layout_toRightOf="@+id/searchIv"
+            android:hint="Search..."
+            android:padding="16dp" />
+
+        <ImageView
+            android:id="@+id/goIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="16dp"
+            android:src="@drawable/ic_magnify_grey600_36dp" />
+
+    </RelativeLayout>
+
+    <WebView
+        android:layout_width="match_parent"
+        android:id="@+id/webview"
+        android:layout_height="match_parent">
+
+
+    </WebView>
+
+</LinearLayout>
