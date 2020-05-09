@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.WebActivity">
+    tools:context=".Activities.WebActivity"
+    tools:ignore="WebViewLayout">
 
     <RelativeLayout
         android:id="@+id/topRl"
@@ -41,11 +42,10 @@
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/bottomLl"
+    <WebView
+        android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/topRl"
-        android:orientation="vertical" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topRl" />
 
 </RelativeLayout>
