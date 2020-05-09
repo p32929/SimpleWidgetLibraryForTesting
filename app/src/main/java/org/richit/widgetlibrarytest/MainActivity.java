@@ -1,9 +1,7 @@
 package org.richit.widgetlibrarytest;
 
-import android.app.Activity;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
-import android.appwidget.AppWidgetProviderInfo;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Build;
@@ -27,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
 //        pickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds);
 //        startActivityForResult(pickIntent, 123);
 
-        addAppWidget(new Intent());
+        addAppWidget();
     }
 
-    void addAppWidget(Intent data) {
+    void addAppWidget() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             AppWidgetManager mAppWidgetManager = getSystemService(AppWidgetManager.class);
 
