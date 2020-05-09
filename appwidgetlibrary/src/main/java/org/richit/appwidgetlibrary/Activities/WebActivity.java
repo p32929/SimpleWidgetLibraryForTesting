@@ -34,7 +34,6 @@ public class WebActivity extends AppCompatActivity {
         webSettings.setAppCacheEnabled(true);
         webSettings.setDomStorageEnabled(true);
         webSettings.setDatabaseEnabled(true);
-        webSettings.setUserAgentString("Android WebView");
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setUseWideViewPort(true);
 
