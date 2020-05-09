@@ -63,6 +63,6 @@ public class WebActivity extends AppCompatActivity {
             }
         });
 
-        webView.loadUrl("https://p32929.github.io/");
+        webView.loadUrl("https://www.google.com/");
     }
 }
