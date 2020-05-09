@@ -13,6 +13,7 @@
         android:src="@drawable/ic_car_grey600_36dp" />
 
     <ImageView
+        android:id="@+id/logo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -20,6 +21,7 @@
         android:src="@drawable/ic_calendar_clock_grey600_36dp" />
 
     <ImageView
+        android:id="@+id/logo3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"

@@ -23,11 +23,18 @@ public class MyAppWidget1 extends AppWidgetProvider {
                                 int appWidgetId) {
 
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.my_app_widget1);
+        openWebviewActivityOnClickOf(R.id.logoIv, context, remoteViews);
+        openWebviewActivityOnClickOf(R.id.logo2, context, remoteViews);
+        openWebviewActivityOnClickOf(R.id.logo3, context, remoteViews);
+        openWebviewActivityOnClickOf(R.id.searchIv, context, remoteViews);
+        appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
+    }
+
+    static void openWebviewActivityOnClickOf(int viewId, Context context, RemoteViews remoteViews) {
         Intent intent = new Intent(context, MyAppWidget1.class);
         intent.setAction(Global.CLICKED_ON_SEARCH_BTN_WIDGET);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        remoteViews.setOnClickPendingIntent(R.id.searchIv, pendingIntent);
-        appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
+        remoteViews.setOnClickPendingIntent(viewId, pendingIntent);
     }
 
     @Override
