@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="4dp"
     android:background="#FFF">
 
     <ImageView
@@ -24,7 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_weight="1"
             android:padding="8dp"
             android:src="@drawable/ic_calendar_clock_grey600_36dp" />
 
@@ -52,7 +52,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_weight="1"
             android:padding="8dp"
             android:src="@drawable/ic_car_grey600_36dp" />
 
@@ -80,7 +79,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_weight="1"
             android:padding="8dp"
             android:src="@drawable/ic_clock_time_four_outline_grey600_36dp" />
 
