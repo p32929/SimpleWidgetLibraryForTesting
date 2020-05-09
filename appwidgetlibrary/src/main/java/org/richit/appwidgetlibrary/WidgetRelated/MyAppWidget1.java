@@ -1,24 +1,32 @@
 package org.richit.appwidgetlibrary.WidgetRelated;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+import android.widget.RemoteViews;
+import android.widget.Toast;
+
+import org.richit.appwidgetlibrary.R;
 
 /**
  * Implementation of App Widget functionality.
  */
 public class MyAppWidget1 extends AppWidgetProvider {
 
+    String TAG = this.getClass().getSimpleName();
+
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
-//        CharSequence widgetText = context.getString(R.string.appwidget_text);
-//        // Construct the RemoteViews object
-//        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.my_app_widget1);
-//        views.setTextViewText(R.id.appwidget_text, widgetText);
-//
-//        // Instruct the widget manager to update the widget
-//        appWidgetManager.updateAppWidget(appWidgetId, views);
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.my_app_widget1);
+        Intent intent = new Intent(context, MyAppWidget1.class);
+        intent.setAction("use_custom_class");
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        remoteViews.setOnClickPendingIntent(R.id.searchIv, pendingIntent);
+        appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
     }
 
     @Override
@@ -30,13 +38,13 @@ public class MyAppWidget1 extends AppWidgetProvider {
     }
 
     @Override
-    public void onEnabled(Context context) {
-        // Enter relevant functionality for when the first widget is created
-    }
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
+        Log.d(TAG, "onReceive: " + intent.getAction());
 
-    @Override
-    public void onDisabled(Context context) {
-        // Enter relevant functionality for when the last widget is disabled
+        if (intent.getAction().equals("use_custom_class")) {
+            Toast.makeText(context, "HAHAHA", Toast.LENGTH_SHORT).show();
+        }
     }
 }
 
