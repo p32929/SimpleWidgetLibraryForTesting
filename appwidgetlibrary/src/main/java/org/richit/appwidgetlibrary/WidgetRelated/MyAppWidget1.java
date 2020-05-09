@@ -7,8 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
+import org.richit.appwidgetlibrary.Activities.WebActivity;
+import org.richit.appwidgetlibrary.Others.Global;
 import org.richit.appwidgetlibrary.R;
 
 /**
@@ -23,7 +24,7 @@ public class MyAppWidget1 extends AppWidgetProvider {
 
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.my_app_widget1);
         Intent intent = new Intent(context, MyAppWidget1.class);
-        intent.setAction("use_custom_class");
+        intent.setAction(Global.CLICKED_ON_SEARCH_BTN_WIDGET);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         remoteViews.setOnClickPendingIntent(R.id.searchIv, pendingIntent);
         appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
@@ -42,8 +43,10 @@ public class MyAppWidget1 extends AppWidgetProvider {
         super.onReceive(context, intent);
         Log.d(TAG, "onReceive: " + intent.getAction());
 
-        if (intent.getAction().equals("use_custom_class")) {
-            Toast.makeText(context, "HAHAHA", Toast.LENGTH_SHORT).show();
+        if (intent.getAction().equals(Global.CLICKED_ON_SEARCH_BTN_WIDGET)) {
+            Intent intentForOpeningActivity = new Intent(context, WebActivity.class);
+            intentForOpeningActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intentForOpeningActivity);
         }
     }
 }

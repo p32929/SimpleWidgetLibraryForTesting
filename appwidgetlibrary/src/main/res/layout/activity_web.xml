@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:padding="16dp"
+            android:padding="12dp"
             android:src="@drawable/ic_magnify_grey600_36dp" />
 
         <EditText
@@ -27,22 +27,22 @@
             android:layout_toLeftOf="@+id/goIv"
             android:layout_toRightOf="@+id/searchIv"
             android:hint="Search..."
-            android:padding="16dp" />
+            android:padding="12dp" />
 
         <ImageView
             android:id="@+id/goIv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:padding="16dp"
+            android:padding="12dp"
             android:src="@drawable/ic_magnify_grey600_36dp" />
 
     </RelativeLayout>
 
     <!--<WebView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:id="@+id/webview"-->
-        <!--android:layout_height="match_parent">-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:id="@+id/webview"-->
+    <!--android:layout_height="match_parent">-->
 
 
     <!--</WebView>-->
