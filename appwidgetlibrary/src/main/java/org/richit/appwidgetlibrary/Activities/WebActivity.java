@@ -131,14 +131,17 @@ public class WebActivity extends AppCompatActivity {
     }
 
     public void onLivescoreClick(View view) {
+        Toast.makeText(this, "LiveScores", Toast.LENGTH_SHORT).show();
         decideWebviewUrl(Global.CLICKED_ON_LIVESCORES_WIDGET_BTN);
     }
 
     public void onTablesClick(View view) {
+        Toast.makeText(this, "Standings", Toast.LENGTH_SHORT).show();
         decideWebviewUrl(Global.CLICKED_ON_STANDINGS_WIDGET_BTN);
     }
 
     public void onSchedulesClick(View view) {
+        Toast.makeText(this, "Schedules", Toast.LENGTH_SHORT).show();
         decideWebviewUrl(Global.CLICKED_ON_SCHEDULES_WIDGET_BTN);
     }
 }

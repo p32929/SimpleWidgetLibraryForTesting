@@ -69,13 +69,13 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
+            android:onClick="onLivescoreClick"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:onClick="onLivescoreClick"
                 android:padding="8dp"
                 android:src="@drawable/ic_calendar_clock_grey600_36dp" />
 
@@ -96,12 +96,12 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
+            android:onClick="onTablesClick"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:onClick="onTablesClick"
                 android:layout_gravity="center"
                 android:padding="8dp"
                 android:src="@drawable/ic_car_grey600_36dp" />
@@ -123,6 +123,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
+            android:onClick="onSchedulesClick"
             android:orientation="vertical">
 
             <ImageView
@@ -137,7 +138,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:onClick="onSchedulesClick"
                 android:text="Next Games"
                 android:textColor="#000"
                 android:textSize="12sp" />
