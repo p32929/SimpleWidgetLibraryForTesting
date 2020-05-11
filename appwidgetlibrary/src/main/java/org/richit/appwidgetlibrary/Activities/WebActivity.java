@@ -98,4 +98,14 @@ public class WebActivity extends AppCompatActivity {
                 webView.loadUrl("https://www.google.com/");
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        if (webView.canGoBack()) {
+            webView.goBack();
+        } else {
+            super.onBackPressed();
+            finish();
+        }
+    }
 }

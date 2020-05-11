@@ -73,7 +73,6 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/livescores"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -100,7 +99,6 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/standingsIv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -127,7 +125,6 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/scheduleIv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -154,7 +151,6 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/searchIv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"

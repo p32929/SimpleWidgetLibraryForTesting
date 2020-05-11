@@ -1,9 +1,7 @@
 package org.richit.widgetlibrarytest;
 
-import android.app.Activity;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
-import android.appwidget.AppWidgetProviderInfo;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Build;
@@ -49,5 +47,11 @@ public class MainActivity extends AppCompatActivity {
                 mAppWidgetManager.requestPinAppWidget(myProvider, b, successCallback);
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
