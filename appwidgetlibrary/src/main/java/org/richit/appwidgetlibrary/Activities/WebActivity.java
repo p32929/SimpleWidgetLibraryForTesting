@@ -19,6 +19,7 @@ import org.richit.appwidgetlibrary.R;
 public class WebActivity extends AppCompatActivity {
 
     String TAG = this.getClass().getSimpleName();
+    WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class WebActivity extends AppCompatActivity {
             Toast.makeText(this, "Webview Not supported", Toast.LENGTH_SHORT).show();
         }
 
-        WebView webView = findViewById(R.id.webview);
+        webView = findViewById(R.id.webview);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setAppCacheEnabled(true);
@@ -67,21 +68,34 @@ public class WebActivity extends AppCompatActivity {
         if (intent != null) {
             Log.d(TAG, "onCreate: INTENT OK");
             if (intent.getAction() != null) {
-                Log.d(TAG, "onCreate: INTENT ACTION OK");
-                if (intent.getAction().equals(Global.CLICKED_ON_BTN_WIDGET)) {
-                    Log.d(TAG, "onCreate: WIDGET CLICK LOG OK");
-                }
+                Log.d(TAG, "onCreate: Action: " + intent.getAction());
+                decideWebviewUrl(intent.getAction());
             } else {
                 Log.d(TAG, "onCreate: INTENT ACTION NULL");
             }
         }
+    }
 
-//        if (getIntent().getAction() != null) {
-//            Log.d(TAG, "onCreate: " + getIntent().getIntExtra(Global.TYPE_OF_WIDGET_CLICK, 0));
-//        } else {
-//            finish();
-//        }
+    private void decideWebviewUrl(String type) {
+        switch (type) {
+            case Global.CLICKED_ON_LIVESCORES_WIDGET_BTN:
+                webView.loadUrl("https://boavistafc.pt/noticias/");
+                break;
 
-        webView.loadUrl("https://www.google.com/");
+            case Global.CLICKED_ON_STANDINGS_WIDGET_BTN:
+                webView.loadUrl("https://www.flashscore.pt/futebol/portugal/primeira-liga/classificacoes/");
+                break;
+
+            case Global.CLICKED_ON_SCHEDULES_WIDGET_BTN:
+                webView.loadUrl("https://www.flashscore.pt/equipa/boavista/n5XEAYKe");
+                break;
+
+            case Global.CLICKED_ON_SEARCH_WIDGET_BTN:
+                webView.loadUrl(Global.SEARCH_URL);
+                break;
+
+            default:
+                webView.loadUrl("https://www.google.com/");
+        }
     }
 }
