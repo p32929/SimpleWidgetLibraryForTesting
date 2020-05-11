@@ -70,17 +70,6 @@ public class WebActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = getIntent();
-        if (intent != null) {
-            Log.d(TAG, "onCreate: INTENT OK");
-            if (intent.getAction() != null) {
-                Log.d(TAG, "onCreate: Action: " + intent.getAction());
-                decideWebviewUrl(intent.getAction());
-            } else {
-                Log.d(TAG, "onCreate: INTENT ACTION NULL");
-            }
-        }
-
         editTextSearch = findViewById(R.id.searchEt);
         editTextSearch.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
         editTextSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -92,6 +81,17 @@ public class WebActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            Log.d(TAG, "onCreate: INTENT OK");
+            if (intent.getAction() != null) {
+                Log.d(TAG, "onCreate: Action: " + intent.getAction());
+                decideWebviewUrl(intent.getAction());
+            } else {
+                Log.d(TAG, "onCreate: INTENT ACTION NULL");
+            }
+        }
 
     }
 
