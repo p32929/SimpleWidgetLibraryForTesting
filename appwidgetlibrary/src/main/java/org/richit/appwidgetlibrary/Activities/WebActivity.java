@@ -6,6 +6,7 @@ import android.net.http.SslError;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings;
@@ -127,5 +128,17 @@ public class WebActivity extends AppCompatActivity {
             super.onBackPressed();
             finish();
         }
+    }
+
+    public void onLivescoreClick(View view) {
+        decideWebviewUrl(Global.CLICKED_ON_LIVESCORES_WIDGET_BTN);
+    }
+
+    public void onTablesClick(View view) {
+        decideWebviewUrl(Global.CLICKED_ON_STANDINGS_WIDGET_BTN);
+    }
+
+    public void onSchedulesClick(View view) {
+        decideWebviewUrl(Global.CLICKED_ON_SCHEDULES_WIDGET_BTN);
     }
 }
