@@ -19,20 +19,10 @@ public class MyAppWidget1 extends AppWidgetProvider {
 
     String TAG = this.getClass().getSimpleName();
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
-
-        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.my_app_widget1);
-        openWebviewActivityOnClickOf(R.id.logoIv, context, remoteViews);
-        openWebviewActivityOnClickOf(R.id.logo2, context, remoteViews);
-        openWebviewActivityOnClickOf(R.id.logo3, context, remoteViews);
-        openWebviewActivityOnClickOf(R.id.searchIv, context, remoteViews);
-        appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
-    }
-
-    static void openWebviewActivityOnClickOf(int viewId, Context context, RemoteViews remoteViews) {
+    private void openWebviewActivityOnClickOf(int viewId, Context context, RemoteViews remoteViews, int type) {
         Intent intent = new Intent(context, MyAppWidget1.class);
-        intent.setAction(Global.CLICKED_ON_SEARCH_BTN_WIDGET);
+        intent.setAction(Global.CLICKED_ON_BTN_WIDGET);
+        intent.putExtra(Global.TYPE_OF_WIDGET_CLICK, type);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         remoteViews.setOnClickPendingIntent(viewId, pendingIntent);
     }
@@ -40,8 +30,13 @@ public class MyAppWidget1 extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         // There may be multiple widgets active, so update all of them
-        for (int appWidgetId : appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId);
+        for (int i = 0; i < appWidgetIds.length; i++) {
+            RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.my_app_widget1);
+            openWebviewActivityOnClickOf(R.id.livescoreIv, context, remoteViews, Global.CLICKED_ON_LIVESCORES_WIDGET_BTN);
+            openWebviewActivityOnClickOf(R.id.tableIv, context, remoteViews, Global.CLICKED_ON_STANDINGS_WIDGET_BTN);
+            openWebviewActivityOnClickOf(R.id.schedulesIv, context, remoteViews, Global.CLICKED_ON_SCHEDULES_WIDGET_BTN);
+            openWebviewActivityOnClickOf(R.id.searchIv, context, remoteViews, Global.CLICKED_ON_SEARCH_WIDGET_BTN);
+            appWidgetManager.updateAppWidget(appWidgetIds[i], remoteViews);
         }
     }
 
@@ -50,8 +45,10 @@ public class MyAppWidget1 extends AppWidgetProvider {
         super.onReceive(context, intent);
         Log.d(TAG, "onReceive: " + intent.getAction());
 
-        if (intent.getAction().equals(Global.CLICKED_ON_SEARCH_BTN_WIDGET)) {
+        if (intent.getAction().equals(Global.CLICKED_ON_BTN_WIDGET)) {
             Intent intentForOpeningActivity = new Intent(context, WebActivity.class);
+            intentForOpeningActivity.setAction(Global.CLICKED_ON_BTN_WIDGET);
+            intentForOpeningActivity.putExtra(Global.TYPE_OF_WIDGET_CLICK, intent.getIntExtra(Global.TYPE_OF_WIDGET_CLICK, 0));
             intentForOpeningActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intentForOpeningActivity);
         }

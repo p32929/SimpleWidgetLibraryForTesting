@@ -1,10 +1,10 @@
 package org.richit.appwidgetlibrary.Activities;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.richit.appwidgetlibrary.Others.Global;
 import org.richit.appwidgetlibrary.R;
 
 public class WebActivity extends AppCompatActivity {
@@ -61,6 +62,25 @@ public class WebActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            Log.d(TAG, "onCreate: INTENT OK");
+            if (intent.getAction() != null) {
+                Log.d(TAG, "onCreate: INTENT ACTION OK");
+                if (intent.getAction().equals(Global.CLICKED_ON_BTN_WIDGET)) {
+                    Log.d(TAG, "onCreate: WIDGET CLICK LOG OK");
+                }
+            } else {
+                Log.d(TAG, "onCreate: INTENT ACTION NULL");
+            }
+        }
+
+//        if (getIntent().getAction() != null) {
+//            Log.d(TAG, "onCreate: " + getIntent().getIntExtra(Global.TYPE_OF_WIDGET_CLICK, 0));
+//        } else {
+//            finish();
+//        }
 
         webView.loadUrl("https://www.google.com/");
     }
