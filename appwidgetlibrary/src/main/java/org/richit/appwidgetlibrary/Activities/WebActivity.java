@@ -5,10 +5,14 @@ import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +24,8 @@ public class WebActivity extends AppCompatActivity {
 
     String TAG = this.getClass().getSimpleName();
     WebView webView;
+
+    EditText editTextSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +80,19 @@ public class WebActivity extends AppCompatActivity {
                 Log.d(TAG, "onCreate: INTENT ACTION NULL");
             }
         }
+
+        editTextSearch = findViewById(R.id.searchEt);
+        editTextSearch.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
+        editTextSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    webView.loadUrl("https://cse.google.com/cse?cx=partner-pub-5633310963159932:9769524521&q=" + editTextSearch.getText().toString());
+                }
+                return false;
+            }
+        });
+
     }
 
     private void decideWebviewUrl(String type) {
@@ -92,6 +111,7 @@ public class WebActivity extends AppCompatActivity {
 
             case Global.CLICKED_ON_SEARCH_WIDGET_BTN:
                 webView.loadUrl(Global.SEARCH_URL);
+                editTextSearch.requestFocus();
                 break;
 
             default:
