@@ -88,6 +88,7 @@ public class WebActivity extends AppCompatActivity {
         });
 
         progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -103,6 +104,7 @@ public class WebActivity extends AppCompatActivity {
     }
 
     private void decideWebviewUrl(String type) {
+        progressBar.setVisibility(View.VISIBLE);
         switch (type) {
             case Global.CLICKED_ON_LIVESCORES_WIDGET_BTN:
                 webView.loadUrl("https://boavistafc.pt/noticias/");
