@@ -13,6 +13,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class WebActivity extends AppCompatActivity {
     WebView webView;
 
     EditText editTextSearch;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +53,14 @@ public class WebActivity extends AppCompatActivity {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
                 Log.d(TAG, "onPageStarted: " + url);
+                progressBar.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 Log.d(TAG, "onPageFinished: " + url);
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -82,6 +86,8 @@ public class WebActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        progressBar = findViewById(R.id.progressBar);
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -131,17 +137,20 @@ public class WebActivity extends AppCompatActivity {
     }
 
     public void onLivescoreClick(View view) {
-        Toast.makeText(this, "LiveScores", Toast.LENGTH_SHORT).show();
         decideWebviewUrl(Global.CLICKED_ON_LIVESCORES_WIDGET_BTN);
     }
 
     public void onTablesClick(View view) {
-        Toast.makeText(this, "Standings", Toast.LENGTH_SHORT).show();
         decideWebviewUrl(Global.CLICKED_ON_STANDINGS_WIDGET_BTN);
     }
 
     public void onSchedulesClick(View view) {
-        Toast.makeText(this, "Schedules", Toast.LENGTH_SHORT).show();
         decideWebviewUrl(Global.CLICKED_ON_SCHEDULES_WIDGET_BTN);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 }
